@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo Exanet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --color-primario: #FF6700; /* Naranja vibrante */
+            --color-fondo: #1A1A1A; /* Negro/Gris muy oscuro */
+            --color-tarjeta: #2C2C2C; /* Gris oscuro para las tarjetas */
+            --color-texto: #F0F0F0; /* Blanco hueso */
+            --color-texto-secundario: #A0A0A0; /* Gris claro */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        header {
+            background-color: var(--color-tarjeta);
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--color-primario);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primario);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-texto);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-primario);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--color-texto);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--color-primario);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Section */
+        #inicio {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        #inicio h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        
+        #inicio h1 span {
+            color: var(--color-primario);
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+            color: var(--color-texto-secundario);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-button {
+            background-color: var(--color-primario);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #E65A00;
+            transform: scale(1.05);
+        }
+        
+        /* Servicios */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .servicio-card {
+            background-color: var(--color-tarjeta);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            transition: transform 0.3s ease, border-bottom 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--color-primario);
+        }
+
+        .servicio-card .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--color-primario);
+        }
+
+        /* Precios */
+        .precios-grid {
+             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .precio-card {
+            background-color: var(--color-tarjeta);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--color-tarjeta);
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+        .precio-card:hover {
+            transform: scale(1.05);
+            border: 2px solid var(--color-primario);
+        }
+        
+        .precio-card h3 {
+            color: var(--color-primario);
+            font-size: 1.5rem;
+        }
+
+        .precio-card .precio {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .precio-card .precio span {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--color-texto-secundario);
+        }
+        
+        .precio-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .precio-card ul li {
+            margin-bottom: 10px;
+            color: var(--color-texto-secundario);
+        }
+        
+        /* Eventos */
+        #eventos {
+            background-color: var(--color-tarjeta);
+        }
+        .evento-card {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        /* Contacto */
+        footer {
+            background-color: #111;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <nav>
+                <div class="logo">EXANET</div>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <div class="container">
+                <h1>Tu Conexión al <span>Sabor y la Diversión</span></h1>
+                <p>Fusionamos el café de origen de nuestra tierra con la emoción del gaming y el internet más veloz. El punto de encuentro que estabas esperando.</p>
+                <a href="#precios" class="cta-button">Ver Combos y Precios</a>
+            </div>
+        </section>
+
+        <hr style="border-color: var(--color-tarjeta);">
+
+        <section id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nuestros Servicios</h2>
+                </div>
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <div class="icon">☕</div>
+                        <h3>Café de Origen</h3>
+                        <p>Disfruta el auténtico sabor de nuestra región. Granos seleccionados de fincas locales y preparados por baristas expertos para una experiencia única.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="icon">🎮</div>
+                        <h3>Zona Gaming</h3>
+                        <p>Sumérgete en la acción con nuestras consolas Xbox Series X y PCs de alto rendimiento. Los últimos juegos te esperan en un ambiente increíble.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <div class="icon">🌐</div>
+                        <h3>Internet de Alta Velocidad</h3>
+                        <p>Navega, juega, trabaja o estudia sin interrupciones. Ofrecemos la conexión más rápida y estable de la zona para que no te pierdas de nada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border-color: var(--color-tarjeta);">
+
+        <section id="precios">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Planes y Combos</h2>
+                </div>
+                <div class="precios-grid">
+                    <div class="precio-card">
+                        <h3>Combo Gamer</h3>
+                        <div class="precio">$15.000 <span>/ 2 horas</span></div>
+                        <ul>
+                            <li>✔️ 2 horas de juego (PC o Xbox)</li>
+                            <li>✔️ 1 Bebida (Gaseosa o Agua)</li>
+                            <li>✔️ Acceso a Wi-Fi</li>
+                        </ul>
+                         <a href="#" class="cta-button">¡Lo quiero!</a>
+                    </div>
+                     <div class="precio-card">
+                        <h3>Combo Dúo</h3>
+                        <div class="precio">$25.000 <span>/ 2 horas</span></div>
+                        <ul>
+                            <li>✔️ 2 horas de juego para 2 personas</li>
+                            <li>✔️ 2 Cafés (Americano o Latte)</li>
+                            <li>✔️ Acceso a Wi-Fi</li>
+                        </ul>
+                         <a href="#" class="cta-button">¡Perfecto!</a>
+                    </div>
+                     <div class="precio-card">
+                        <h3>Pase de Día</h3>
+                        <div class="precio">$40.000 <span>/ todo el día</span></div>
+                        <ul>
+                           <li>✔️ 6 horas de juego (fraccionables)</li>
+                           <li>✔️ Refill de Café Americano</li>
+                           <li>✔️ Acceso premium a Wi-Fi</li>
+                        </ul>
+                        <a href="#" class="cta-button">¡Dámelo!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border-color: var(--color-tarjeta);">
+
+        <section id="eventos">
+            <div class="container">
+                 <div class="section-header">
+                    <h2>Próximo Evento</h2>
+                </div>
+                <div class="evento-card">
+                    <h3>🏆 GRAN TORNEO DE FIFA 🏆</h3>
+                    <p style="font-size: 1.2rem; color: var(--color-texto-secundario);">¡Demuestra que eres el mejor de la región! Grandes premios y mucha diversión.</p>
+                    <p style="font-size: 1.5rem; font-weight: 600; color: var(--color-primario);">Sábado 27 de Septiembre - 3:00 PM</p>
+                    <a href="#" class="cta-button">Inscríbete Aquí</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contacto">
+        <div class="container">
+            <p class="logo" style="margin-bottom: 10px;">EXANET</p>
+            <p>📍 Calle Ficticia 123, Vereda Central, Silvania, Cundinamarca</p>
+            <p>🕒 Lunes a Domingo: 10:00 AM - 10:00 PM</p>
+            <p style="color: var(--color-texto-secundario); margin-top: 20px;">© 2025 Exanet. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
